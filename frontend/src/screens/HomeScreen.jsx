@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { data } from '../../src/data';
+import { data } from '../data.js';
 function HomeScreen() {
   return (
     <div>

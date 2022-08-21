@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <header>
+      <header className="bg-dark_1">
         <a href="/">Amazon</a>
       </header>
       <main>List</main>

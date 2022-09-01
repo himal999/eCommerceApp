@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useReducer } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,7 +50,28 @@ function ProductScreen() {
   ) : error ? (
     <div>{error}</div>
   ) : (
-    <div>{product.name}</div>
+    <div className=" w-full h-auto relative flex flex-col">
+      <div className=" container mx-auto w-full h-auto flex flex-row">
+        <div>
+          <img src={product.image} alt={product.name} />
+        </div>
+        <div className=" flex flex-col">
+          <Helmet>
+            <title>{product.name}</title>
+          </Helmet>
+          <h2>{product.name}</h2>
+          <h2>{product.price}</h2>
+          <h2>{product.description}</h2>
+          {product.countInStock > 0 ? (
+            <div className=" flex-col flex">
+              <span>In Stock</span> <button>Add to cart</button>
+            </div>
+          ) : (
+            <span>OutofStock</span>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 

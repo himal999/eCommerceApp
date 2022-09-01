@@ -6,7 +6,7 @@ export const data = {
       category: 'shirt',
       image: '/images/p1.jpg',
       price: 120,
-      countInStock: 100,
+      countInStock: 1000,
       brand: 'Nike',
       reating: 4.5,
       numReview: 10,

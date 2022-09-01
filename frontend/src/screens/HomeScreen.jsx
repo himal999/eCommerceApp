@@ -41,26 +41,32 @@ function HomeScreen() {
     <div>
       <h1 className="text-2xl font-bold">Featured Products</h1>
       <div className="flex flex-wrap justify-center">
-        {products.map((product) => (
-          <div key={product.slug} className="border-[1px] border-black m-4">
-            <Link to={`/product/${product.slug}`}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-[100%] max-w-[400px]"
-              />
-            </Link>
-            <div className="p-4">
+        {loading ? (
+          <div className=" text-black text-3xl">Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+          products.map((product) => (
+            <div key={product.slug} className="border-[1px] border-black m-4">
               <Link to={`/product/${product.slug}`}>
-                <p>{product.name}</p>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-[100%] max-w-[400px]"
+                />
               </Link>
-              <p>
-                <strong>${product.price}</strong>
-              </p>
-              <button>Add to Cart</button>
+              <div className="p-4">
+                <Link to={`/product/${product.slug}`}>
+                  <p>{product.name}</p>
+                </Link>
+                <p>
+                  <strong>${product.price}</strong>
+                </p>
+                <button>Add to Cart</button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
